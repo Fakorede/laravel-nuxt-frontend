@@ -20,6 +20,7 @@
                 <li class="nav-item">
                     <nuxt-link to="/register" class="nav-link">Register</nuxt-link>
                 </li>
+                {{ authenticated }}
             </ul>
         </div>
     </nav>

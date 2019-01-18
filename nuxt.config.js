@@ -52,7 +52,11 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ["./plugins/mixins/user.js", "./plugins/axios.js"],
+  plugins: [
+    "./plugins/mixins/user.js",
+    "./plugins/axios.js",
+    "./plugins/mixins/validation.js"
+  ],
 
   /*
    ** Nuxt.js modules

@@ -27,6 +27,7 @@
 
 <script>
 export default {
+  middleware: ["user"],
   data() {
     return {
       form: {
@@ -46,7 +47,9 @@ export default {
         }
       });
       // redirect
-      this.$router.push("/");
+      this.$router.push({
+        path: this.$route.query.redirect || "/login"
+      });
     }
   }
 };

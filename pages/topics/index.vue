@@ -3,7 +3,19 @@
         <h2>Latest Topics</h2>
         <div class="bg-light mt-5 mb-5" v-for="(topic, index) in topics" :key="index" style="padding: 20px;">
             <h2><nuxt-link :to="{name: 'topics-id', params: {id: topic.id}}">{{topic.title}}</nuxt-link></h2>
+            
+            
+            <div v-if="authenticated">
+              <div v-if="user.id === topic.user.id">
+                <nuxt-link :to="{name: 'topics-edit', params: {id: topic.id}}">
+                  <button class="btn btn-outline-success fa fa-edit fa-2x pull-right"></button>
+                </nuxt-link>
+              </div>
+            </div>
+            
+            
             <p class="text-muted">{{topic.created_at}} by {{topic.user.name}}</p>
+
             <div class="ml-5 content" v-for="(content, index) in topic.posts" :key=index>
                 {{content.body}}
                 <p class="text-muted">{{content.created_at}} by {{content.user.name}}</p>
@@ -12,8 +24,8 @@
 
         <nav>
             <ul class="pagination justify-content-center">
-                <li class="page-item" v-for="(key, value) in links">
-                    <a href="#" class="page-link" @click="loadMore(key)">{{value}}</a>
+                <li class="page-item" v-for="(key, value) in links" :key="key">
+                  <a href="#" class="page-link" @click="loadMore(key)">{{value}}</a>
                 </li>
             </ul>
         </nav>

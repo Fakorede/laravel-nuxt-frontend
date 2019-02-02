@@ -7,22 +7,22 @@
             
             <div v-if="authenticated">
               <div v-if="user.id === topic.user.id">
+                <button @click.prevent="deleteTopic(topic.id)" class="btn btn-outline-danger fa fa-trash fa-2x pull-right"></button>
+            
                 <nuxt-link :to="{name: 'topics-edit', params: {id: topic.id}}">
                   <button class="btn btn-outline-success fa fa-edit fa-2x pull-right"></button>
                 </nuxt-link>
 
-                <button @click.prevent="deleteTopic(topic.id)" class="btn btn-outline-danger fa fa-trash fa-2x pull-right"></button>
-            
               </div>
             </div>
             
             
             <p class="text-muted">{{topic.created_at}} by {{topic.user.name}}</p>
 
-            <div class="ml-5 content" v-for="(content, index) in topic.posts" :key=index>
+            <!-- <div class="ml-5 content" v-for="(content, index) in topic.posts" :key="index">
                 {{content.body}}
                 <p class="text-muted">{{content.created_at}} by {{content.user.name}}</p>
-            </div>
+            </div> -->
         </div>
 
         <nav>

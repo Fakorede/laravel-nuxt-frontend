@@ -10,6 +10,9 @@
                 <nuxt-link :to="{name: 'topics-edit', params: {id: topic.id}}">
                   <button class="btn btn-outline-success fa fa-edit fa-2x pull-right"></button>
                 </nuxt-link>
+
+                <button @click.prevent="deleteTopic(topic.id)" class="btn btn-outline-danger fa fa-trash fa-2x pull-right"></button>
+            
               </div>
             </div>
             
@@ -51,6 +54,10 @@ export default {
     async loadMore(key) {
       let { data } = await this.$axios.$get(key);
       return (this.topics = { ...this.topics, ...data });
+    },
+    async deleteTopic(id) {
+      await this.$axios.$delete(`/topics/${id}`);
+      this.$router.push("/");
     }
   }
 };
@@ -62,7 +69,8 @@ export default {
   padding: 0 10px 0 10px;
 }
 
-.btn-outline-success {
+.btn-outline-success,
+.btn-outline-danger {
   border: none;
 }
 </style>

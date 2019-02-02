@@ -56,9 +56,13 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .content {
   border-left: 10px solid #fff;
   padding: 0 10px 0 10px;
+}
+
+.btn-outline-success {
+  border: none;
 }
 </style>
